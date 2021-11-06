@@ -152,6 +152,10 @@ const backdropClickHandler = () => {
 	clearIngredientInput();
 };
 
+const recipeListHighlighter = () => {
+	
+}
+
 
 
 const expandRecipeListBtnHandler = () => {
@@ -274,15 +278,18 @@ const renderIngrElement = (
 		<div class="ingredient-element__name grid">
 			<h2>${name}</h2>
 		</div>
-		<div class="ingredient-element__info grid">
-			<div class="purchased-price">
-				<p>PP: £${price}</p>
+		<div class="ingredient-element__info grid content-left">
+			<div class="purchased-cost">
+				<p><span class="ingredient__property-title">Base cost:</span> £${price}</p>
 			</div>
 			<div class="purchased-weight">
-				<p>PW: ${pWeight}g</p>
+				<p><span class="ingredient__property-title">Base weight:</span> ${pWeight}g</p>
 			</div>
 			<div class="recipe-weight">
-				<p>RW: ${rWeight}g</p>
+				<p><span class="ingredient__property-title">Recipe weight:</span> ${rWeight}g</p>
+			</div>
+			<div class="recipe-cost">
+				<p><span class="ingredient__property-title">Recipe weight:</span> £${ingredientObject.recipePrice}</p>
 			</div>
 		</div>
 	`;

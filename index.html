@@ -11,57 +11,106 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 	</head>
 	<body>
+		<div class="page-container">
+					<!-- Recipe list (side bar) -->
+		<div class="recipe-list-sidebar grid grid-column">
+			<div class="recipe-list__header grid one-whole content-right">
+				<div class="recipe-list__header-btn-container grid">
+					<button class="recipe-list__expand-btn"><i class="fas fa-th-list"></i><i class="fas fa-caret-right"></i></button>
+				</div>
+			</div>
+			<div class="recipe-list__content">
+				<div class="recipe-list__outer">
+					<div class="recipe-list__inner text-left">
+						<ul class="recipe-list"></ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
 		<div class="content-container grid grid-column">
 
-		
-			<header class="header grid">
-				<h1>Recipe Calculator</h1>
+			<!-- <header class="header grid one-whole">
+				<div></div>
 				<div>
-					<!-- <button class=""><i class="fas fa-cog"></i></button> -->
-					<button class="btn btn--primary open__create-recipe-modal__btn"><i class="fas fa-plus"></i>New recipe</button>
+					<button class=""><i class="fas fa-cog"></i></button>
 				</div>
-			</header>
-			<nav class="nav grid">
-				<div class="recipe-list__placeholder"></div>
+			</header> -->
+
+
+
+
+			<nav class="nav grid nine-tenths">
 				<div class="grid one-half content-right">
 					<button class="btn btn--top-nav open__rename-recipe-modal__btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</i>Rename</button>
 					<button class="btn btn--top-nav open__add-ingredient-modal__btn"><i class="fas fa-plus"></i>Ingredient</button>
+					
 				</div>
-				<div class="one-half"></div>
-			</nav>
+				<div class="grid one-half content-right">
+					<button class="btn btn--primary open__create-recipe-modal__btn"><i class="fas fa-plus"></i>New recipe</button>
 
+				</div>
+			</nav>
+			
+			
+			
+			
 			<!-- Main content -->
-			<main class="main-content grid">
-				<div class="recipe-list__placeholder"></div>
-				<div class="ingredient-list-container grid grid-column content-left one-half">
+			<main class="main-content grid nine-tenths">
+				
+
+
+				<div class="ingredient-list-container one-half">
 					<!-- <section class="entry-text card">
 						<p>Click here to begin and create a recipe</p>
 					</section> -->
 					<ul class="ingredient-list grid grid-column"></ul>
 				</div>
+
+
+
 				<div class="calculator-menu-container one-half grid grid-column">
 					<div class="calculator-menu__top-half grid grid-column">
 						<div class="calculator__title one-whole">
 							<h2>Choose how to divide your recipe into portions.</h2>
 						</div>
+
+
+
 						<div class="calculator__options one-whole">
+
 							<div class="portion__radio-btns grid grid-column">
+
 								<div class="radio-item radio-item-1 grid">
 									<input type="radio" name="weight" id="weight__radio-btn" value="weight" checked="true">
 									<label for="weight">Divide portions by weight.</label>
 								</div>
+
+
+
 								<div class="radio-item radio-item-2 grid">
 									<input type="radio" name="weight" id="equal__radio-btn" value="equal">
 									<label for="equal">Divide portions into equal amounts.</label>
 								</div>
+
 							</div>
+
+
 							<div class="portion__input grid grid-column">
 								<input class="portion__text-input" type="text" placeholder="300(g)" >
 								<button class="btn btn--primary calculate-btn btn--full-width">Calculate</button>
 							</div>
+
 						</div>
+
 					</div>
+
+
+
+
 					<div class="calculator-bottom-half grid grid-column">
 						<div class="calculator__answers">dfdfdfd	</div>
 					</div>
@@ -164,7 +213,7 @@
 		</div>
 
 
-					<!-- Recipe list (side bar) -->
+					<!-- Recipe list (side bar)
 					<div class="recipe-list-sidebar grid grid-column">
 						<div class="recipe-list__header grid one-whole content-right">
 							<div class="recipe-list__header-btn-container grid">
@@ -178,8 +227,11 @@
 								</div>
 							</div>
 						</div>
-					</div>
-	
+					</div> -->
+		</div>
+
+					
+
 	</body>
 	<script src="https://kit.fontawesome.com/6163d4aebf.js" crossorigin="anonymous"></script>
 	<script src="assets/scripts/app.js" defer></script>

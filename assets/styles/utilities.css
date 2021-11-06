@@ -16,6 +16,9 @@
     border: 1px solid #ef476f;
     background: #ef476f;
     color: white;
+    box-shadow: 0px 1px 3px 1px rgba(151,168,201,0.14);
+  -webkit-box-shadow: 0px 1px 3px 1px rgba(151,168,201,0.14);
+  -moz-box-shadow: 0px 1px 3px 1px rgba(151,168,201,0.14);
     
 }
 
@@ -26,15 +29,22 @@
 }
 
 .btn--top-nav {
-    font-size: .8rem;
-    border: 1px solid rgb(223, 223, 223);
+    font-weight: bold;
+    padding: 1rem 1rem;
+    font-size: .85rem;
+    border: 1px solid transparent;
     background: none;
     color: #333;
+
 }
 
 .btn--top-nav:hover,
 .btn--top-nav:active {
-    border-color: rgb(194, 194, 194);
+  box-shadow: 0px 1px 3px 1px rgba(151,168,201,0.14);
+  -webkit-box-shadow: 0px 1px 3px 1px rgba(151,168,201,0.14);
+  -moz-box-shadow: 0px 1px 3px 1px rgba(151,168,201,0.14);
+    border-color: #d4d7e2;
+    
 }
 .btn--passive {
 	color: #00329e;
@@ -231,11 +241,17 @@
   
   .hide {
     display: none !important; }
+
+
   
   .content-left { justify-content: flex-start !important;}
   .content-center { justify-content: center !important;}
   .content-right { justify-content: flex-end !important;}
   
+  .align-top { align-items: flex-start !important;}
+  .align-center { align-items: center !important;}
+  .align-bottom { align-items: flex-end !important;}
+
   .text-left {
     text-align: left !important; }
   
