@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Favorite Movies</title>
+		<link rel="stylesheet" href="/assets/styles/normalize.css" />
+		<link rel="stylesheet" href="/assets/styles/utilities.css" />
+		<link rel="stylesheet" href="/assets/styles/style.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+	</head>
+	<body>
+		<div class="content-container grid grid-column">
+
+		
+			<header class="header grid">
+				<h1>Recipe Calculator</h1>
+				<div>
+					<!-- <button class=""><i class="fas fa-cog"></i></button> -->
+					<button class="btn btn--primary open__create-recipe-modal__btn"><i class="fas fa-plus"></i>New recipe</button>
+				</div>
+			</header>
+			<nav class="nav grid">
+				<div class="recipe-list__placeholder"></div>
+				<div class="grid one-half content-right">
+					<button class="btn btn--top-nav open__rename-recipe-modal__btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+					</i>Rename</button>
+					<button class="btn btn--top-nav open__add-ingredient-modal__btn"><i class="fas fa-plus"></i>Ingredient</button>
+				</div>
+				<div class="one-half"></div>
+			</nav>
+
+			<!-- Main content -->
+			<main class="main-content grid">
+				<div class="recipe-list__placeholder"></div>
+				<div class="ingredient-list-container grid grid-column content-left one-half">
+					<!-- <section class="entry-text card">
+						<p>Click here to begin and create a recipe</p>
+					</section> -->
+					<ul class="ingredient-list grid grid-column"></ul>
+				</div>
+				<div class="calculator-menu-container one-half grid grid-column">
+					<div class="calculator-menu__top-half grid grid-column">
+						<div class="calculator__title one-whole">
+							<h2>Choose how to divide your recipe into portions.</h2>
+						</div>
+						<div class="calculator__options one-whole">
+							<div class="portion__radio-btns grid grid-column">
+								<div class="radio-item radio-item-1 grid">
+									<input type="radio" name="weight" id="weight__radio-btn" value="weight" checked="true">
+									<label for="weight">Divide portions by weight.</label>
+								</div>
+								<div class="radio-item radio-item-2 grid">
+									<input type="radio" name="weight" id="equal__radio-btn" value="equal">
+									<label for="equal">Divide portions into equal amounts.</label>
+								</div>
+							</div>
+							<div class="portion__input grid grid-column">
+								<input class="portion__text-input" type="text" placeholder="300(g)" >
+								<button class="btn btn--primary calculate-btn btn--full-width">Calculate</button>
+							</div>
+						</div>
+					</div>
+					<div class="calculator-bottom-half grid grid-column">
+						<div class="calculator__answers">dfdfdfd	</div>
+					</div>
+
+
+					
+				</div>
+			</main>
+
+			<!-- backdrop -->
+			<div class="backdrop"></div>
+
+<!-- MODALS -->
+			<!-- New Recipe Modal -->
+			<div class="modal card create-recipe-modal">
+				<div class="modal__title">
+					<h2>Create new Recipe</h2>
+				</div>
+				<div class="modal__content grid grid-column">
+					<form class="new-recipe-form">
+						<input type="text" step="any" name="recipe-name" placeholder="Recipe name" class="recipe-name" />
+					</form>
+				</div> 
+				<div class="modal__actions grid grid-column">
+					<button class="btn btn--primary btn--full-width create-recipe-btn">Create</button>
+					<button class="btn btn--passive btn--full-width cancel-modal__btn">Cancel</button>
+				</div>
+			</div>
+
+
+			<!-- Add ingredient modal -->
+			<div class="modal card add-ingredient-modal">
+				<form class="modal__content grid grid-column">
+					<label for="Ingredient"> Ingredient name</label>
+					<input type="text" name="Ingredient" placeholder="Chicken" class="title" autofocus />
+					<label for="Price">Purchased price (£)</label>
+					<input type="text" step="any" placeholder="6.99"  name="price" class="price" />
+					
+					<label for="purchasedweight">Purchased Weight/Volume (g)</label>
+					<input
+					type="text"
+					step="any"
+					placeholder="1000" 
+					name="purchasedweight"
+					class="purchased-weight"
+					/>
+					
+					<label for="recipeweight">Recipe Weight/Volume (g)</label>
+					<input type="text" step="any"  name="recipeweight" placeholder="550" class="recipeweight" />
+					
+				</form>
+				<div class="modal__actions grid grid-column">
+					<button class="btn btn--primary btn--full-width add-ingredient__btn">Add</button>
+					<button class="btn btn--passive btn--full-width cancel-modal__btn">Cancel</button>
+				</div>
+			</div>
+			
+			<!-- Edit ingredient modal -->
+			<div class="modal card edit-ingredient-modal">
+				<form class="modal__content grid grid-column">
+					<label for="Ingredient">Ingredient name</label>
+					<input type="text" name="Ingredient" placeholder="Chicken" class="title" autofocus />
+					<label for="Price">Purchased price (£)</label>
+					<input type="text" step="any" placeholder="6.99"  name="price" class="price" />
+					
+					<label for="purchasedweight">Purchased Weight/Volume (g)</label>
+					<input
+					type="text"
+					step="any"
+					placeholder="1000" 
+					name="purchasedweight"
+					class="purchased-weight"
+					/>
+					
+					<label for="recipeweight">Recipe Weight/Volume (g)</label>
+					<input type="text" step="any"  name="recipeweight" placeholder="550" class="recipeweight" />
+					
+				</form>
+				<div class="modal__actions grid grid-column">
+					<button class="btn btn--full-width btn--primary save__edit-ingredient__btn">Save</button>
+					<button class="btn btn--full-width btn--passive-red delete__ingredient__btn">Delete</button>
+					<button class="btn btn--full-width btn--passive cancel-modal__btn">Cancel</button>
+				</div>
+			</div>
+
+			<!-- delete ingredient modal -->
+			<div class="modal card delete-ingredient-modal">
+				<div class="modal__title">
+					<h2>Are you sure?</h2>
+				</div>
+				<p class="modal__content">
+					Are you sure you want to delete this item? This action can't be made
+					undone!
+				</p>
+				<div class="modal__actions delete-btns grid grid-column">
+					<button class="btn btn--full-width btn--danger">Yes</button>
+					<button class="btn btn--full-width btn--passive">No (Cancel)</button>
+				</div>
+			</div>
+		</div>
+
+
+					<!-- Recipe list (side bar) -->
+					<div class="recipe-list-sidebar grid grid-column">
+						<div class="recipe-list__header grid one-whole content-right">
+							<div class="recipe-list__header-btn-container grid">
+								<button class="recipe-list__expand-btn"><i class="fas fa-th-list"></i><i class="fas fa-caret-right"></i></button>
+							</div>
+						</div>
+						<div class="recipe-list__content one-whole">
+							<div class="recipe-list__outer">
+								<div class="recipe-list__inner text-left">
+									<ul class="recipe-list"></ul>
+								</div>
+							</div>
+						</div>
+					</div>
+	
+	</body>
+	<script src="https://kit.fontawesome.com/6163d4aebf.js" crossorigin="anonymous"></script>
+	<script src="assets/scripts/app.js" defer></script>
+	
+	
+	</html>
+	

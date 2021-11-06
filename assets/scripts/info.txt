@@ -1,0 +1,31 @@
+bulk
+    cost
+
+recipe
+
+
+unit    
+    cost
+    sugar
+    protein
+    fat
+
+ingr
+
+
+
+BUGs
+
+if price is below £1 its rounded down to 0.
+
+recipe VS portion
+
+price info
+    divide by n;
+    portion size in grams
+
+nutritional info
+    total calories
+
+
+
