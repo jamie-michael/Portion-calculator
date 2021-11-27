@@ -11,119 +11,128 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 	</head>
 	<body>
-		<div class="page-container">
-					<!-- Recipe list (side bar) -->
-		<div class="recipe-list-sidebar grid grid-column">
-			<div class="recipe-list__header grid one-whole content-right">
-				<div class="recipe-list__header-btn-container grid">
-					<button class="recipe-list__expand-btn"><i class="fas fa-th-list"></i><i class="fas fa-caret-right"></i></button>
-				</div>
-			</div>
-			<div class="recipe-list__content">
-				<div class="recipe-list__outer">
-					<div class="recipe-list__inner text-left">
-						<ul class="recipe-list"></ul>
+		<div class="page-container grid">
+			<!-- Recipe list (side bar) -->
+			<div class="side-bar">
+				<div class="side-bar__container">
+					<div class="side-bar__header grid one-whole grid-column cent">
+						<div class="logo grid content-left">
+							<i class="fas fa-carrot"></i>
+							<h1>Recipe<span>calc</span></h1>
+						</div>
+						<div class="search grid grid-column">
+							<i class="fas fa-search"></i>
+							<input class="search-bar" type="text" placeholder="Search...">
+						</div>
 					</div>
+					<ul class="side-bar--content text-left">
+						<li class="side-bar--recipes category">
+							<div class="grid category-title content-left">
+								<i class="fas fa-book"></i>
+								<h4>Recipes</h4>
+							</div>
+							<div class="category-list--wrapper recipe-list--wrapper">
+								<ul class="recipe-list"></ul>
+							</div>
+						</li>
+						<li class="side-bar--settings category">
+							<div class="grid category-title content-left">
+								<i class="fas fa-sliders-h"></i>
+								<h4>Settings</h4>
+							</div>
+							<div class="category-list--wrapper settings-list--wrapper">
+								<ul class="settings-list">
+									<li class="side-bar--list-item">Account</li>
+									<li class="side-bar--list-item">Preferences</li>
+									<li class="side-bar--list-item">Night mode</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
 				</div>
 			</div>
-		</div>
 
-
-
-		<div class="content-container grid grid-column">
-
-			<!-- <header class="header grid one-whole">
-				<div></div>
-				<div>
-					<button class=""><i class="fas fa-cog"></i></button>
-				</div>
-			</header> -->
-
-
-
-
-			<nav class="nav grid nine-tenths">
-				<div class="grid one-half content-right">
-					<button class="btn btn--top-nav open__rename-recipe-modal__btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-					</i>Rename</button>
-					<button class="btn btn--top-nav open__add-ingredient-modal__btn"><i class="fas fa-plus"></i>Ingredient</button>
-					
-				</div>
-				<div class="grid one-half content-right">
-					<button class="btn btn--primary open__create-recipe-modal__btn"><i class="fas fa-plus"></i>New recipe</button>
-
-				</div>
-			</nav>
 			
-			
-			
-			
-			<!-- Main content -->
-			<main class="main-content grid nine-tenths">
+
+			<!-- sidebar bits -->
+			<div class="side-bar--placeholder"></div>
+
+
+
+
+			<div class="content-container grid grid-column">
+				<nav class="nav grid one-whole">
+					<div class="grid one-half">
+						<div class="one-half content-left">
+							<div class="recipe-title one-whole text-left">
+								<h2></h2>
+							</div>
+						</div>
+						<div class="tool-bar one-half">
+							<div class="tool-bar__wrapper grid content-right">
+								<button class="btn btn--top-nav delete-recipe__btn"><i class="far fa-trash-alt"></i>Delete</button>
+								<button class="btn btn--top-nav open__rename-recipe-modal__btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+								</i>Rename</button>
+								<button class="btn btn--top-nav open__add-ingredient-modal__btn"><i class="fas fa-plus"></i>Ingredient</button>
+							</div>
+						</div>
+					</div>
+					<div class="grid one-half content-right">
+						<button class="btn btn--primary open__create-recipe-modal__btn"><i class="fas fa-plus"></i>New recipe</button>
+					</div>
+				</nav>
 				
+				<!-- Main content -->
+				<main class="main-content content-card grid one-whole">
+					<div class="ingredient-list-container one-half">
+						<!-- <section class="entry-text card">
+							<p>Click here to begin and create a recipe</p>
+						</section> -->
+						<ul class="ingredient-list grid grid-column"></ul>
+					</div>
+					<div class="calculator-menu-container one-half grid grid-column">
+						<div class="calculator-menu__top-half grid grid-column">
+							<div class="calculator__title one-whole">
+								<h2>Choose how to divide your recipe into portions.</h2>
+							</div>
+							<div class="calculator__options one-whole">
+								<div class="portion__radio-btns grid grid-column">
+									<div class="radio-item radio-item-1 grid">
+										<input type="radio" name="weight" id="weight__radio-btn" value="weight" checked="true">
+										<label for="weight">Divide portions by weight.</label>
+									</div>
+									<div class="radio-item radio-item-2 grid">
+										<input type="radio" name="weight" id="equal__radio-btn" value="equal">
+										<label for="equal">Divide portions into equal amounts.</label>
+									</div>
+								</div>
+								<div class="portion__input grid grid-column">
+									<input class="portion__text-input text-input--primary" type="text" placeholder="300(g)" >
+									<button class="btn btn--primary calculate-btn btn--full-width">Calculate</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</main>
 
-
-				<div class="ingredient-list-container one-half">
-					<!-- <section class="entry-text card">
-						<p>Click here to begin and create a recipe</p>
-					</section> -->
-					<ul class="ingredient-list grid grid-column"></ul>
+				<div class="content-card answers one-whole">
+					<h3 class="answer-element"></h3>
 				</div>
 
+		
 
-
-				<div class="calculator-menu-container one-half grid grid-column">
-					<div class="calculator-menu__top-half grid grid-column">
-						<div class="calculator__title one-whole">
-							<h2>Choose how to divide your recipe into portions.</h2>
-						</div>
-
-
-
-						<div class="calculator__options one-whole">
-
-							<div class="portion__radio-btns grid grid-column">
-
-								<div class="radio-item radio-item-1 grid">
-									<input type="radio" name="weight" id="weight__radio-btn" value="weight" checked="true">
-									<label for="weight">Divide portions by weight.</label>
-								</div>
-
-
-
-								<div class="radio-item radio-item-2 grid">
-									<input type="radio" name="weight" id="equal__radio-btn" value="equal">
-									<label for="equal">Divide portions into equal amounts.</label>
-								</div>
-
-							</div>
-
-
-							<div class="portion__input grid grid-column">
-								<input class="portion__text-input" type="text" placeholder="300(g)" >
-								<button class="btn btn--primary calculate-btn btn--full-width">Calculate</button>
-							</div>
-
-						</div>
-
-					</div>
-
-
-
-
-					<div class="calculator-bottom-half grid grid-column">
-						<div class="calculator__answers">dfdfdfd	</div>
-					</div>
-
-
-					
+				<!-- Side bar button -->
+				<div class="side-bar--toggle-btn grid">
+					<i class="fas fa-bars ham"></i>
 				</div>
-			</main>
+				<div class="side-bar--shadow"></div>
 
-			<!-- backdrop -->
+				<!-- backdrop -->
 			<div class="backdrop"></div>
 
-<!-- MODALS -->
+
+			<!-- MODALS -->
+
 			<!-- New Recipe Modal -->
 			<div class="modal card create-recipe-modal">
 				<div class="modal__title">
@@ -131,7 +140,7 @@
 				</div>
 				<div class="modal__content grid grid-column">
 					<form class="new-recipe-form">
-						<input type="text" step="any" name="recipe-name" placeholder="Recipe name" class="recipe-name" />
+						<input type="text" step="any" name="recipe-name" placeholder="Recipe name" class="recipe-name text-input--primary" />
 					</form>
 				</div> 
 				<div class="modal__actions grid grid-column">
@@ -145,9 +154,9 @@
 			<div class="modal card add-ingredient-modal">
 				<form class="modal__content grid grid-column">
 					<label for="Ingredient"> Ingredient name</label>
-					<input type="text" name="Ingredient" placeholder="Chicken" class="title" autofocus />
+					<input type="text" name="Ingredient" placeholder="Chicken" class="title text-input--primary" autofocus />
 					<label for="Price">Purchased price (£)</label>
-					<input type="text" step="any" placeholder="6.99"  name="price" class="price" />
+					<input type="text" step="any" placeholder="6.99"  name="price" class="price  text-input--primary" />
 					
 					<label for="purchasedweight">Purchased Weight/Volume (g)</label>
 					<input
@@ -155,11 +164,11 @@
 					step="any"
 					placeholder="1000" 
 					name="purchasedweight"
-					class="purchased-weight"
+					class="purchased-weight text-input--primary"
 					/>
 					
 					<label for="recipeweight">Recipe Weight/Volume (g)</label>
-					<input type="text" step="any"  name="recipeweight" placeholder="550" class="recipeweight" />
+					<input type="text" step="any"  name="recipeweight" placeholder="550" class="recipeweight text-input--primary" />
 					
 				</form>
 				<div class="modal__actions grid grid-column">
@@ -172,9 +181,9 @@
 			<div class="modal card edit-ingredient-modal">
 				<form class="modal__content grid grid-column">
 					<label for="Ingredient">Ingredient name</label>
-					<input type="text" name="Ingredient" placeholder="Chicken" class="title" autofocus />
+					<input type="text" name="Ingredient" placeholder="Chicken" class="title text-input--primary" autofocus />
 					<label for="Price">Purchased price (£)</label>
-					<input type="text" step="any" placeholder="6.99"  name="price" class="price" />
+					<input type="text" step="any" placeholder="6.99"  name="price" class="price text-input--primary" />
 					
 					<label for="purchasedweight">Purchased Weight/Volume (g)</label>
 					<input
@@ -182,11 +191,11 @@
 					step="any"
 					placeholder="1000" 
 					name="purchasedweight"
-					class="purchased-weight"
+					class="purchased-weight text-input--primary"
 					/>
 					
 					<label for="recipeweight">Recipe Weight/Volume (g)</label>
-					<input type="text" step="any"  name="recipeweight" placeholder="550" class="recipeweight" />
+					<input type="text" step="any"  name="recipeweight" placeholder="550" class="recipeweight text-input--primary" />
 					
 				</form>
 				<div class="modal__actions grid grid-column">
@@ -211,26 +220,6 @@
 				</div>
 			</div>
 		</div>
-
-
-					<!-- Recipe list (side bar)
-					<div class="recipe-list-sidebar grid grid-column">
-						<div class="recipe-list__header grid one-whole content-right">
-							<div class="recipe-list__header-btn-container grid">
-								<button class="recipe-list__expand-btn"><i class="fas fa-th-list"></i><i class="fas fa-caret-right"></i></button>
-							</div>
-						</div>
-						<div class="recipe-list__content one-whole">
-							<div class="recipe-list__outer">
-								<div class="recipe-list__inner text-left">
-									<ul class="recipe-list"></ul>
-								</div>
-							</div>
-						</div>
-					</div> -->
-		</div>
-
-					
 
 	</body>
 	<script src="https://kit.fontawesome.com/6163d4aebf.js" crossorigin="anonymous"></script>

@@ -6,9 +6,7 @@
 	margin: 0 0.5rem;
 }
 
-.btn .fa-plus {
-    padding-right: 4px;
-}
+
 
 
 .btn--primary {
@@ -29,9 +27,10 @@
 }
 
 .btn--top-nav {
+    display: flex;
     font-weight: bold;
     padding: 1rem 1rem;
-    font-size: .85rem;
+    font-size: .75rem;
     border: 1px solid transparent;
     background: none;
     color: #333;
@@ -85,6 +84,16 @@
     margin: 2px 0;
 }
 
+
+.text-input--primary {
+	padding: 0.4rem 0.2rem;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+}
+
+.text-input--primary:focus {
+	background: #fff1c4;
+}
 
 /* ==================== Grid system (flex) ======================= */
 .grid {
