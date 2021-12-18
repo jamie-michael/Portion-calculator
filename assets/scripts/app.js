@@ -269,24 +269,25 @@ const calculateBtnHandler = () => {
 	const recipePrice = stagedRecipe.recipeTotals.price;
 	const recipeWeight = stagedRecipe.recipeTotals.weight;
 
-	const placeholder = document.querySelector('.answer-element');
-	const element = document.createElement('div'); 
+	const element = document.querySelector('.answer-element');
 
 	// element.innerHTML = `<h3>1 portion = £${answer}</h3>`
 	// placeholder.replaceWith(element);
 
 	if (equalRadioBtn.checked) {
 		answer = recipePrice / input;
+		answer = answer.toFixed(2);
 		console.log(answer);
-		element.innerHTML = `<h3>1 portion = £${answer}</h3>`
-		placeholder.replaceWith(element);
-	
-
+		element.textContent = (answer < 1.0) ? `1 portion = ${answer}p` : `1 portion = £${answer}`;
+		
+		
 	}
-
+	
 	if (weightRadioBtn.checked) {
-		answer = recipePrice * (input / recipeWeight);
+		answer = recipePrice * (input / recipeWeight).toFixed(2);
+		// answer = answer.toFixed(2);
 		console.log(answer);
+		element.textContent = (answer < 1.0) ? `1 portion = ${answer}p` : `1 portion = £${answer}`;
 	}
 };
 
@@ -315,6 +316,7 @@ const renderIngrElement = (
 	ingredientObject,
 	EDITED
 ) => {
+	const rPrice = ingredientObject.recipePrice;
 	const newIngredientElement = document.createElement('li');
 	newIngredientElement.className = 'ingredient-element';
 	newIngredientElement.innerHTML = `
@@ -332,7 +334,7 @@ const renderIngrElement = (
 				<p><span class="ingredient__property-title">Recipe weight:</span> ${rWeight}g</p>
 			</div>
 			<div class="recipe-cost">
-				<p><span class="ingredient__property-title">Recipe weight:</span> £${ingredientObject.recipePrice}</p>
+				<p><span class="ingredient__property-title">Recipe cost:</span> £${rPrice}</p>
 			</div>
 		</div>
 	`;

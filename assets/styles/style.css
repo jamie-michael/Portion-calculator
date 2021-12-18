@@ -159,6 +159,12 @@ button:focus {
 	height: 20%;
 	margin-bottom: 2rem;
 }
+
+.answer-element {
+	/* font-size: 2rem; */
+}
+
+
 .content-card {
 	overflow: hidden;
 	background: #fff;
@@ -531,21 +537,11 @@ button:focus {
 	border-bottom: 1px solid #f1f4fe;
 }
 
-.ingredient-element__image {
-	width: 10rem;
-	border-radius: 10px 0 0 10px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	padding: 0.5rem;
-	background: #303443;
+
+.ingredient-element__name h2 {
+	font-size: 1rem;
 }
 
-.ingredient-element__image h2 {
-	font-size: 1.5rem;
-	color: white;
-}
 
 .ingredient-element__info {
 	padding-top: 0.5rem;
