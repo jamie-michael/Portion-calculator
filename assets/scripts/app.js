@@ -65,6 +65,185 @@ const portionTotals = {
 
 const recipes = [];
 
+const cheeseSandwich = {
+    "name": "Cheese Sandwich",
+    "id": "0.6869345453402433",
+    "ingredients": [
+        {
+            "name": "Bread",
+            "id": "0.4724811806253941",
+            "purchasedPrice": 1.1,
+            "purchasedWeight": 800,
+            "recipePrice": 0.11,
+            "recipeWeight": 80,
+            "portionPrice": 0,
+            "portionWeight": 0,
+            "hasCalculated": false,
+            "element": {}
+        },
+        {
+            "name": "Butter",
+            "id": "0.6363468718659286",
+            "purchasedPrice": 1.48,
+            "purchasedWeight": 250,
+            "recipePrice": 0.18,
+            "recipeWeight": 30,
+            "portionPrice": 0,
+            "portionWeight": 0,
+            "hasCalculated": false,
+            "element": {}
+        },
+        {
+            "name": "Cheese",
+            "id": "0.07742688514091278",
+            "purchasedPrice": 5.3,
+            "purchasedWeight": 550,
+            "recipePrice": 0.87,
+            "recipeWeight": 90,
+            "portionPrice": 0,
+            "portionWeight": 0,
+            "hasCalculated": false,
+            "element": {}
+        }
+    ],
+    "purchasedTotals": {
+        "price": 7.88,
+        "weight": 1600
+    },
+    "recipeTotals": {
+        "price": 1.16,
+        "weight": 200
+    },
+    "element": {},
+    "hasCalculated": true
+}; 
+
+const populateRecipe = () => {
+
+	var xhr = new XMLHttpRequest();
+
+	
+	xhr.onload = function(){
+		exampleRecipes = this.responseText;
+		// console.log(exampleRecipes);
+		exampleRecipes = JSON.parse(exampleRecipes);
+		
+		
+		exampleRecipes.forEach(r => {
+
+			// Renders recipe
+			recipes.push(r);
+			const newRecipeElement = document.createElement('li');
+			newRecipeElement.innerHTML = `<p>${r.name}</p>`;
+			newRecipeElement.classList.add('side-bar--list-item');
+			r.element = newRecipeElement;
+		
+			newRecipeElement.addEventListener(
+				'click',
+				editRecipeHandler.bind(null, r)
+			);
+	
+			const listRoot = document.querySelector('.recipe-list');
+			listRoot.append(newRecipeElement);
+	
+			// Renders ingredient elements
+			const ingredients = Object.values(r.ingredients);
+			ingredients.forEach(i => {
+				const newIngredientElement = document.createElement('li');
+				newIngredientElement.className = 'ingredient-element';
+				newIngredientElement.innerHTML = `
+				<div class="ingredient-element__name grid">
+					<h2>${i.name}</h2>
+				</div>
+				<div class="ingredient-element__info grid content-left">
+					<div class="purchased-cost">
+						<p><span class="ingredient__property-title">Base cost:</span> £${i.purchasedPrice}</p>
+					</div>
+					<div class="purchased-weight">
+						<p><span class="ingredient__property-title">Base weight:</span> ${i.purchasedWeight}g</p>
+					</div>
+					<div class="recipe-weight">
+						<p><span class="ingredient__property-title">Recipe weight:</span> ${i.recipeWeight}g</p>
+					</div>
+					<div class="recipe-cost">
+						<p><span class="ingredient__property-title">Recipe cost:</span> £${i.recipePrice}</p>
+					</div>
+				</div>
+			`;
+			newIngredientElement.addEventListener(
+				'click',
+				openEditIngredientBtnHandler.bind(null, i, false)
+			);
+			i.element = newIngredientElement;
+			});
+		});
+	};
+	
+	xhr.open('GET', 'assets/example-recipes.json', true);	
+	xhr.send();
+}
+
+const saveRecipesJSON = () => {
+	console.log(JSON.stringify(recipes));
+	
+}
+
+
+// const populateRecipe = () => {
+// 	const exampleRecipes = [cheeseSandwich];
+
+// 	exampleRecipes.forEach(r => {
+// 		// imports recipes dataand renders recipe
+// 		recipes.push(r);
+// 		const newRecipeElement = document.createElement('li');
+// 		newRecipeElement.innerHTML = `<p>${r.name}</p>`;
+// 		newRecipeElement.classList.add('side-bar--list-item');
+// 		r.element = newRecipeElement;
+	
+// 		newRecipeElement.addEventListener(
+// 			'click',
+// 			editRecipeHandler.bind(null, r)
+// 		);
+
+// 		const listRoot = document.querySelector('.recipe-list');
+// 		listRoot.append(newRecipeElement);
+// 		// renderRecipeElement(r, r.name);
+
+// 		// Renders ingredient elements
+// 		const ingredients = Object.values(r.ingredients);
+// 		ingredients.forEach(i => {
+// 			const newIngredientElement = document.createElement('li');
+// 			newIngredientElement.className = 'ingredient-element';
+// 			newIngredientElement.innerHTML = `
+// 			<div class="ingredient-element__name grid">
+// 				<h2>${i.name}</h2>
+// 			</div>
+// 			<div class="ingredient-element__info grid content-left">
+// 				<div class="purchased-cost">
+// 					<p><span class="ingredient__property-title">Base cost:</span> £${i.purchasedPrice}</p>
+// 				</div>
+// 				<div class="purchased-weight">
+// 					<p><span class="ingredient__property-title">Base weight:</span> ${i.purchasedWeight}g</p>
+// 				</div>
+// 				<div class="recipe-weight">
+// 					<p><span class="ingredient__property-title">Recipe weight:</span> ${i.recipeWeight}g</p>
+// 				</div>
+// 				<div class="recipe-cost">
+// 					<p><span class="ingredient__property-title">Recipe cost:</span> £${i.recipePrice}</p>
+// 				</div>
+// 			</div>
+// 		`;
+// 		newIngredientElement.addEventListener(
+// 			'click',
+// 			openEditIngredientBtnHandler.bind(null, i, false)
+// 		);
+// 		i.element = newIngredientElement;
+// 		});
+// 	});
+
+	
+
+// }
 const populateApp = () => {
 	ingredients.forEach((element) => {
 		renderIngrElement(
@@ -104,8 +283,7 @@ const updateIngredientBaseCost = () => {
 	activeRecipe.ingredients.forEach((ingr) => {
 		let magicNumber = ingr.purchasedWeight / ingr.recipeWeight;
 		magicNumber = magicNumber ? magicNumber : 0;
-		ingr.recipePrice =
-			ingr.purchasedPrice / magicNumber ? ingr.purchasedPrice / magicNumber : 0;
+		ingr.recipePrice = (ingr.purchasedPrice / magicNumber) ? parseFloat(parseFloat((ingr.purchasedPrice / magicNumber)).toFixed(2)) : 0;
 	});
 };
 
@@ -162,13 +340,13 @@ const toggleSideBar = () => {
 	const menuContainer = menu.children[0];
 	const shadow = contentContainer;
 	
-	sidebarToggleBtn.classList.toggle('show');
-	sidebarToggleBtn.children[0].classList.toggle('show')
-	sidebarPlaceholder.classList.toggle('show');
-	sideBarShadow.classList.toggle('show');
-	menuContainer.classList.toggle('show');
-	shadow.classList.toggle('show');
-	menu.classList.toggle('show');
+	sidebarToggleBtn.classList.toggle('open-menu');
+	sidebarToggleBtn.children[0].classList.toggle('open-menu')
+	sidebarPlaceholder.classList.toggle('open-menu');
+	sideBarShadow.classList.toggle('open-menu');
+	menuContainer.classList.toggle('open-menu');
+	shadow.classList.toggle('open-menu');
+	menu.classList.toggle('open-menu');
 
 	// container.classList.toggle('show');
 	// const content = contentContainer
@@ -278,7 +456,7 @@ const calculateBtnHandler = () => {
 		answer = recipePrice / input;
 		answer = answer.toFixed(2);
 		console.log(answer);
-		element.textContent = (answer < 1.0) ? `1 portion = ${answer}p` : `1 portion = £${answer}`;
+		element.textContent = `1 portion = £${answer}`;
 		
 		
 	}
@@ -287,7 +465,7 @@ const calculateBtnHandler = () => {
 		answer = recipePrice * (input / recipeWeight).toFixed(2);
 		// answer = answer.toFixed(2);
 		console.log(answer);
-		element.textContent = (answer < 1.0) ? `1 portion = ${answer}p` : `1 portion = £${answer}`;
+		element.textContent = `1 portion = £${answer}`;
 	}
 };
 
@@ -339,6 +517,8 @@ const renderIngrElement = (
 		</div>
 	`;
 
+	
+
 	newIngredientElement.addEventListener(
 		'click',
 		openEditIngredientBtnHandler.bind(null, ingredientObject, false)
@@ -359,14 +539,16 @@ const addIngredientHandler = () => {
 	const userInputs = activeModal.querySelectorAll('input');
 
 	const name = userInputs[0].value ? userInputs[0].value : 'Name me';
-	const purchasedPrice = parseInt(userInputs[1].value)
-		? parseInt(userInputs[1].value)
+
+	const purchasedPrice = parseFloat(userInputs[1].value)	
+		? parseFloat(parseFloat(userInputs[1].value).toFixed(2))
 		: 0;
-	const purchasedWeight = parseInt(userInputs[2].value)
-		? parseInt(userInputs[2].value)
+		
+	const purchasedWeight = parseFloat(userInputs[2].value)
+		? parseFloat(parseFloat(userInputs[2].value).toFixed(2))
 		: 0;
-	const recipeWeight = parseInt(userInputs[3].value)
-		? parseInt(userInputs[3].value)
+	const recipeWeight = parseFloat(userInputs[3].value)
+		? parseFloat(parseFloat(userInputs[3].value).toFixed(2))
 		: 0;
 
 	const newIngr = {
@@ -437,15 +619,19 @@ const saveEditIngredientHandler = () => {
 	const userInputs = activeModal.querySelectorAll('input');
 
 	const name = userInputs[0].value;
-	const purchasedPrice = parseInt(userInputs[1].value);
-	const purchasedWeight = parseInt(userInputs[2].value);
-	const recipeWeight = parseInt(userInputs[3].value);
+	const purchasedPrice = parseFloat(parseFloat(userInputs[1].value).toFixed(2));
+	const purchasedWeight = parseFloat(parseFloat(userInputs[2].value).toFixed(2));
+	const recipeWeight = parseFloat(parseFloat(userInputs[3].value).toFixed(2));
 
 	activeIngredient.name = name;
 	activeIngredient.purchasedPrice = purchasedPrice;
 	activeIngredient.purchasedWeight = purchasedWeight;
 	activeIngredient.recipeWeight = recipeWeight;
 
+	updateIngredientBaseCost();
+	updatePurchasedTotals();
+	updateRecipeTotals();
+	
 	renderIngrElement(
 		activeIngredient.id,
 		name,
@@ -456,9 +642,6 @@ const saveEditIngredientHandler = () => {
 		true
 	);
 
-	updateIngredientBaseCost();
-	updatePurchasedTotals();
-	updateRecipeTotals();
 
 	checkactiveVsStagedRecipe();
 
@@ -466,10 +649,6 @@ const saveEditIngredientHandler = () => {
 	toggleBackdrop();
 	clearIngredientInput();
 
-	// console.log('purchasedTotals PRICE: ' + activeRecipe.purchasedTotals.price);
-	// console.log('purchasedTotals WEIGHT: ' + activeRecipe.purchasedTotals.weight);
-	// console.log('ingr RECIPE PRICE: ' + activeRecipe.ingredients[num -1].recipePrice);
-	// console.log('ingr RECIPE WEIGHT: ' + activeRecipe.ingredients[num -1].recipeWeight);
 };
 
 const openEditIngredientBtnHandler = (ingredientObject, FROMDELETEMENU) => {
@@ -505,10 +684,10 @@ const populateEditRecipeModal = () => {
 	userInputs[3].value = ingr.recipeWeight;
 };
 
-const closeIngredientDeletionModal = () => {
-	toggleBackdrop();
-	deleteIngredientModal.classList.toggle('show');
-};
+// const closeIngredientDeletionModal = () => {
+// 	toggleBackdrop();
+// 	deleteIngredientModal.classList.toggle('show');
+// };
 
 // ======================= Delete ingredient ==============================
 
@@ -525,8 +704,10 @@ const deleteIngredientHandler = () => {
 	updateIngredientBaseCost();
 	updatePurchasedTotals();
 	updateRecipeTotals();
+
 	closeActiveModal();
 	toggleBackdrop();
+
 };
 
 const openDeleteIngredientHandler = () => {
@@ -589,6 +770,7 @@ const confirmCreateRecipeHandler = () => {
 		},
 	};
 
+
 	recipes.push(newRecipe);
 	// activeRecipe = newRecipe;
 	closeActiveModal();
@@ -604,14 +786,16 @@ const confirmCreateRecipeHandler = () => {
 	renderRecipeElement(newRecipe, name);
 	clearIngredientInput();
 	editRecipeHandler(newRecipe);
+	
 };
 
 const renderRecipeElement = (recipe, name, reRender) => {
 	const title = document.querySelector('.recipe-title').children[0];
-	const newRecipeElement = document.createElement('li');
-
+	
+	name = name.replace(/^\w/, (c) => c.toUpperCase());
 	title.textContent = name;
-	name.replace(/^\w/, (c) => c.toUpperCase());
+
+	const newRecipeElement = document.createElement('li');
 	newRecipeElement.innerHTML = `<p>${name}</p>`;
 	newRecipeElement.classList.add('side-bar--list-item');
 	recipe.element = newRecipeElement;
@@ -661,7 +845,7 @@ const editRecipeHandler = (recipe) => {
 		listRoot.removeChild(listRoot.firstChild);
 	}
 
-	// adds selected recipe ingredient elements to UI
+	// adds new  recipe ingredient elements to UI
 	for (const key in activeRecipe.ingredients) {
 		listRoot.append(activeRecipe.ingredients[key].element);
 	}
@@ -675,11 +859,11 @@ const startRenameRecipeBtnHandler = () => {
 		return;
 	}
 
-	if (!sideBar.classList.contains('show')) {
+	if (!(sideBar.classList.contains('open-menu'))) {
 		delay = 300;
 		toggleSideBar();
 	}
-	if (!dropdownMenu.classList.contains('show')) {
+	if (!(dropdownMenu.classList.contains('show'))) {
 		delay = 300;
 		dropdownTitle.click();
 	}
@@ -733,7 +917,11 @@ const invisibleBackdropHandler = () => {
 	activeRecipeRenaming = false;
 };
 
+
+// ======================= Delete recipes ==============================
+
 const deleteRecipeHandler = () => {
+	const title = document.querySelector('.recipe-title').children[0];
 	const index = recipes.indexOf(activeRecipe);
 	recipes.splice(index, 1);
 	const listRoot = document.querySelector('.recipe-list');
@@ -751,18 +939,15 @@ const deleteRecipeHandler = () => {
 		
 		console.log('close bits');
 	}
+
+	title.textContent = '';
 	
 	listRoot.children[index].remove();
 
-	// updateIngredientBaseCost();
-	// updatePurchasedTotals();
-	// updateRecipeTotals();
-	closeActiveModal();
-	toggleBackdrop();
-
-
-
-}
+	updateIngredientBaseCost();
+	updatePurchasedTotals();
+	updateRecipeTotals();
+};
 
 const startDeleteRecipeBtnHandler = () => {
 	const modal = document.querySelector('.delete-ingredient-modal');
@@ -774,13 +959,23 @@ const startDeleteRecipeBtnHandler = () => {
 	const cancelBtn = activeModal.querySelector('.btn--passive');
 	const confirmBtn = activeModal.querySelector('.btn--danger');
 
-
-	cancelBtn.addEventListener('click', () => {
+	const closeModal = () => {
+		toggleBackdrop();
+		closeActiveModal();
+		cancelBtn.removeEventListener('click', closeModal);
+		confirmBtn.removeEventListener('click', deleteRecipe);
+	}
+	cancelBtn.addEventListener('click', closeModal);
+	
+	
+	const deleteRecipe = () => {
+		deleteRecipeHandler();
 		closeActiveModal();
 		toggleBackdrop();
-	});
-
-	confirmBtn.addEventListener('click', deleteRecipeHandler);
+		cancelBtn.removeEventListener('click', closeModal);
+		confirmBtn.removeEventListener('click', deleteRecipe);
+	}
+	confirmBtn.addEventListener('click', deleteRecipe);
 };
 
 const keypressChecker = (event) => {
@@ -848,12 +1043,31 @@ const keypressChecker = (event) => {
 	}
 };
 sidebarCategoryBtnHandler();
+populateRecipe();
+
+
 // populateApp();
 // updateIngrRecipeFigures();
 // updatePurchasedTotals();
 // updateRecipeTotals();
 
 //
+
+// const exampleRecipe = {
+// 	name: 'Homemade Pizza',
+// 	id: Math.random().toString(),
+// 	ingredients: [
+
+// 	],
+// 	purchasedTotals: {
+// 		price: 0,
+// 		weight: 0,
+// 	},
+// 	recipeTotals: {
+// 		price: 0,
+// 		weight: 0,
+// 	},
+// };
 
 openAddIngredientModalBtn.addEventListener(
 	'click',

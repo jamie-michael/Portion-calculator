@@ -105,15 +105,21 @@ button:focus {
 	flex-grow: 1;
 	height: 100%;
 	background: #f1f4fe;
-	padding: 0 4rem;
-	justify-content: stretch;
+	padding: 0 4rem 2rem 4rem;
+	justify-content: flex-start;
 	transition: box-shadow 0.3s ease;
+	overflow: auto;
 	box-shadow: 0px 0px 10px 7px rgba(0, 0, 0, 0);
 	-webkit-box-shadow: 0px 0px 10px 7px rgba(0, 0, 0, 0);
 	-moz-box-shadow: 0px 0px 10px 7px rgba(0, 0, 0, 0);
 }
 
-.content-container.show {
+.page-content {
+	justify-content: stretch;
+	height: 100%;
+}
+
+.content-container.open-menu {
 	transition: box-shadow 0.3s ease;
 	box-shadow: 0px 0px 4px 3px rgba(26, 26, 26, 0.3);
 	-webkit-box-shadow: 0px 0px 4px 3px rgba(26, 26, 26, 0.3);
@@ -121,8 +127,7 @@ button:focus {
 }
 
 .nav {
-	height: 5rem;
-	/* padding: 1rem 0; */
+	padding: 0.5rem 0;
 }
 
 .nav .recipe-title {
@@ -151,13 +156,11 @@ button:focus {
 
 .main-content {
 	height: 80%;
-	max-height: 500px;
 	margin-bottom: 2rem;
 }
 
 .answers {
 	height: 20%;
-	margin-bottom: 2rem;
 }
 
 .answer-element {
@@ -198,7 +201,7 @@ button:focus {
 	
 }
 
-.side-bar--placeholder.show {
+.side-bar--placeholder.open-menu {
 	transition: width 0.3s ease;
 	width: 14rem;
 }
@@ -217,7 +220,7 @@ button:focus {
 	
 }
 
-.side-bar--shadow.show {
+.side-bar--shadow.open-menu {
 	transition: width 0.3s ease, opacity 0.3s ease;
 	opacity: 0;
 	width: 14rem;
@@ -242,7 +245,7 @@ button:focus {
 	background: #f26989;
 }
 
-.side-bar--toggle-btn.show {
+.side-bar--toggle-btn.open-menu {
 	top: 0.7rem;
 	width: 2.55rem;
 	height: 2.55rem;
@@ -260,7 +263,7 @@ button:focus {
 	transition: font-size 0.3s ease;
 }
 
-.side-bar--toggle-btn .ham.show {
+.side-bar--toggle-btn .ham.open-menu {
 	transition: font-size 0.3s ease;
 	font-size: 0.9rem;
 	
@@ -277,7 +280,7 @@ button:focus {
 	transition: opacity 0.3s ease;
 }
 
-.side-bar__container.show {
+.side-bar__container.open-menu {
 	transition: opacity 0.3s ease;
 	opacity: 100%;
 }
@@ -487,34 +490,38 @@ button:focus {
 
 /* ======================== Ingredients =========================== */
 .ingredient-list-container {
-	height: 100%;
-	overflow-y: scroll;
-	padding: 0;
-	border-top: 2px solid #f1f4fe;
-	border-bottom: 2px solid #f1f4fe;
+	height: 30.5625rem;
+	overflow-y: overlay;
+	padding: .5rem;
+	border: 1px solid rgba(151, 168, 201, 0.14);
+	background-color: #fcfdff;
+	box-shadow: 0px 1px 9px 4px rgba(151, 168, 201, 0.14) inset;
+	-webkit-box-shadow: 0px 1px 9px 4px rgba(151, 168, 201, 0.14) inset;
+	-moz-box-shadow: 0px 1px 9px 4px rgba(151, 168, 201, 0.14) inset;
+	border-radius: 10px;
+	
 }
 
 .ingredient-list {
 	width: 100%;
-	/* padding-right: 2rem; */
 }
 
 .ingredient-element {
-	margin-bottom: 1rem;
+	background: #fff;
+	margin: 0.5rem 0;
 	padding: 1rem;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 	border-radius: 5px;
 	cursor: pointer;
-	transition: 0.1s;
 	width: 98%;
 	box-shadow: 0px 1px 3px 1px rgba(151, 168, 201, 0.5);
 	-webkit-box-shadow: 0px 1px 3px 1px rgba(151, 168, 201, 0.5);
 	-moz-box-shadow: 0px 1px 3px 1px rgba(151, 168, 201, 0.5);
+	border: 1px solid transparent;
 }
 
 .ingredient-element:hover {
-	transform: scale(0.99);
-	transition: 0.1s;
+	border: 1px solid #34395747;
 }
 
 .ingredient-element h2 {
@@ -558,16 +565,18 @@ button:focus {
 /* ===================== Calculator menu =========================== */
 
 .calculator-menu-container {
-	justify-content: stretch;
-	align-items: stretch;
+	/* justify-content: stretch; */
 	height: 100%;
 	/* border-left: 2px solid #f1f4fe; */
-	padding-left: 2.5rem;
+	padding: 0 0 0 2rem;
 }
 
-.calculator-menu-container .calculator__title {
-	padding-bottom: 3rem;
-	border-bottom: #f1f4fe solid 2px;
+.calculator-menu-container .calculator__header {
+	padding-bottom: 1rem;
+	border-bottom: #f1f4fe solid 1px;
+}
+.calculator-menu-container .calculator__header h2 {
+	font-size: 1rem;
 }
 
 .calculator-menu-container .portion__radio-btns {
@@ -580,6 +589,10 @@ button:focus {
 	justify-content: stretch;
 }
 
+.calculator-menu-container .radio-item label {
+	font-size: 0.9rem;
+}
+
 .calculator-menu-container .radio-item-1 {
 	padding-bottom: 1rem;
 }
@@ -589,10 +602,7 @@ button:focus {
 }
 
 .calculator-menu-container .portion__input {
-	align-items: stretch;
 	margin: 0 auto;
-	width: 40%;
-	max-width: 300px;
 }
 
 .calculator-menu-container .portion__input input {

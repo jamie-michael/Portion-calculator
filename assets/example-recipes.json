@@ -1,0 +1,106 @@
+[
+	{
+		"name": "Cheese Sandwich",
+		"id": "0.6869345453402433",
+		"ingredients": [
+			{
+				"name": "Bread",
+				"id": "0.4724811806253941",
+				"purchasedPrice": 1.1,
+				"purchasedWeight": 800,
+				"recipePrice": 0.11,
+				"recipeWeight": 80,
+				"portionPrice": 0,
+				"portionWeight": 0,
+				"hasCalculated": false,
+				"element": {}
+			},
+			{
+				"name": "Butter",
+				"id": "0.6363468718659286",
+				"purchasedPrice": 1.48,
+				"purchasedWeight": 250,
+				"recipePrice": 0.18,
+				"recipeWeight": 30,
+				"portionPrice": 0,
+				"portionWeight": 0,
+				"hasCalculated": false,
+				"element": {}
+			},
+			{
+				"name": "Cheese",
+				"id": "0.07742688514091278",
+				"purchasedPrice": 5.3,
+				"purchasedWeight": 550,
+				"recipePrice": 0.87,
+				"recipeWeight": 90,
+				"portionPrice": 0,
+				"portionWeight": 0,
+				"hasCalculated": false,
+				"element": {}
+			}
+		],
+		"purchasedTotals": { "price": 7.88, "weight": 1600 },
+		"recipeTotals": { "price": 1.16, "weight": 200 },
+		"element": {},
+		"hasCalculated": false
+	},
+	{
+		"name": "Omelette",
+		"id": "0.24831785088504899",
+		"ingredients": [
+			{
+				"name": "Eggs",
+				"id": "0.5619605619410528",
+				"purchasedPrice": 5,
+				"purchasedWeight": 2100,
+				"recipePrice": 0.5,
+				"recipeWeight": 210,
+				"portionPrice": 0,
+				"portionWeight": 0,
+				"hasCalculated": false,
+				"element": {}
+			},
+			{
+				"name": "Grated mozzarella",
+				"id": "0.8915470039670705",
+				"purchasedPrice": 1.9,
+				"purchasedWeight": 250,
+				"recipePrice": 0.38,
+				"recipeWeight": 50,
+				"portionPrice": 0,
+				"portionWeight": 0,
+				"hasCalculated": false,
+				"element": {}
+			},
+			{
+				"name": "Cream cheese",
+				"id": "0.7297316866552417",
+				"purchasedPrice": 1,
+				"purchasedWeight": 180,
+				"recipePrice": 0.28,
+				"recipeWeight": 50,
+				"portionPrice": 0,
+				"portionWeight": 0,
+				"hasCalculated": false,
+				"element": {}
+			},
+			{
+				"name": "Butter",
+				"id": "0.43303341901997183",
+				"purchasedPrice": 1.4,
+				"purchasedWeight": 250,
+				"recipePrice": 0.17,
+				"recipeWeight": 30,
+				"portionPrice": 0,
+				"portionWeight": 0,
+				"hasCalculated": false,
+				"element": {}
+			}
+		],
+		"purchasedTotals": { "price": 9.3, "weight": 2780 },
+		"recipeTotals": { "price": 1.33, "weight": 340 },
+		"element": {},
+		"hasCalculated": true
+	}
+]

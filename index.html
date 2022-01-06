@@ -53,18 +53,18 @@
 			</div>
 
 			
-
+			
 			<!-- sidebar bits -->
 			<div class="side-bar--placeholder"></div>
-
-
-
-
+			
+			
+			
+			
 			<div class="content-container grid grid-column">
 				<nav class="nav grid one-whole">
-					<div class="grid one-half">
+					<div class="grid four-sixths">
 						<div class="one-half content-left">
-							<div class="recipe-title grid one-whole text-left">
+							<div class="recipe-title grid one-whole content-left">
 								<h2></h2>
 							</div>
 						</div>
@@ -77,47 +77,49 @@
 							</div>
 						</div>
 					</div>
-					<div class="grid one-half content-right">
+					<div class="grid two-sixths content-right">
 						<button class="btn btn--primary open__create-recipe-modal__btn"><i class="fas fa-plus"></i>New recipe</button>
 					</div>
 				</nav>
-				
 				<!-- Main content -->
-				<main class="main-content content-card grid one-whole">
-					<div class="ingredient-list-container one-half">
-						<!-- <section class="entry-text card">
-							<p>Click here to begin and create a recipe</p>
-						</section> -->
-						<ul class="ingredient-list grid grid-column"></ul>
-					</div>
-					<div class="calculator-menu-container one-half grid grid-column">
-						<div class="calculator-menu__top-half grid grid-column">
-							<div class="calculator__title one-whole">
-								<h2>Choose how to divide your recipe into portions.</h2>
-							</div>
-							<div class="calculator__options one-whole">
-								<div class="portion__radio-btns grid grid-column">
-									<div class="radio-item radio-item-1 grid">
-										<input type="radio" name="weight" id="weight__radio-btn" value="weight" checked="true">
-										<label for="weight">Divide portions by weight.</label>
-									</div>
-									<div class="radio-item radio-item-2 grid">
-										<input type="radio" name="weight" id="equal__radio-btn" value="equal">
-										<label for="equal">Divide portions into equal amounts.</label>
-									</div>
+				<div class="page-content grid grid-column one-whole">
+					<main class="main-content content-card grid one-whole">
+						<div class="ingredient-list-container four-sixths">
+							<!-- <section class="entry-text card">
+								<p>Click here to begin and create a recipe</p>
+							</section> -->
+							<ul class="ingredient-list grid grid-column"></ul>
+						</div>
+						<div class="calculator-menu-container two-sixths grid grid-column">
+							<div class="calculator-menu__top-half grid grid-column">
+								<div class="calculator__header one-whole">
+									<h2>Choose how to divide your recipe into portions.</h2>
 								</div>
-								<div class="portion__input grid grid-column">
-									<input class="portion__text-input text-input--primary" type="text" placeholder="300(g)" >
-									<button class="btn btn--primary calculate-btn btn--full-width">Calculate</button>
+								<div class="calculator__options one-whole">
+									<div class="portion__radio-btns grid grid-column">
+										<div class="radio-item radio-item-1 grid">
+											<input type="radio" name="weight" id="weight__radio-btn" value="weight" checked="true">
+											<label for="weight">Divide portions by weight.</label>
+										</div>
+										<div class="radio-item radio-item-2 grid">
+											<input type="radio" name="weight" id="equal__radio-btn" value="equal">
+											<label for="equal">Divide portions into equal amounts.</label>
+										</div>
+									</div>
+									<div class="portion__input grid grid-column">
+										<input class="portion__text-input one-whole text-input--primary" type="text" placeholder="300(g)" >
+										<button class="btn btn--primary calculate-btn one-whole">Calculate</button>
+									</div>
 								</div>
 							</div>
 						</div>
+					</main>
+	
+					<div class="content-card answers one-whole">
+						<h3 class="answer-element"></h3>
 					</div>
-				</main>
-
-				<div class="content-card answers one-whole">
-					<h3 class="answer-element"></h3>
 				</div>
+
 
 		
 
